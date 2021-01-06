@@ -17,7 +17,8 @@ K15 -- Sessions Greetings
   <h1>
   Enter your username & password below to proceed.
   </h1>
-    <form action="/auth">
+  {{error_type}}
+    <form action="/auth" method = "post">
       <input type="text" placeholder="Username" name="username">
       <input type="password" placeholder="Password" name="password">
       <input type="submit" name="sub1">

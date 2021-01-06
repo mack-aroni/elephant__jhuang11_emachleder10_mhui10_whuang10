@@ -1,28 +1,34 @@
 <!--
 Team Elephant (Jeffrey Huang, Matthew Hui, Winnie Huang, Ethan Machleder)
 SoftDev
-K15 -- Sessions Greetings
-2020-12-11
+P0 - Da Art of Storytellin' (Pt. 2)
+2021-1-11
 -->
-
 <!DOCTYPE html>
 <html>
-
   <head>
     <title> Homepage </title>
   </head>
-
   <body>
 
     <h1>TNPG: Elephant</h1>
     <h2>Roster: Jeffrey Huang, Matthew Hui, Winnie Huang, Ethan Machleder</h2>
     <h3>    Welcome {{ user }} !    </h3>
     <h4>Your Login Has Been Successful! \(^-^)/ </h4>
-
-    <form action = "/create_Story">
+    <br>
+    {% if contribution_list| length > 0 %}
+		<h5> Stories Contributed: </h5>
+		{% for title in contribution_list %}
+			<form action = "/story_view" method = "post">
+				<input type = "hidden" value = "1" name = "editor"> 
+				<input type = "submit" value = "{{title}}" name = "title">
+			</form>
+		{% endfor %}
+    {% endif %}
+    <br>
+    <form action = "/create_story">
       <input type = "submit" value = "Create Story">
     </form>
-
     <form action = "/edit_stories">
       <input type = "submit" value = "Edit Stories">
     </form>
@@ -30,7 +36,3 @@ K15 -- Sessions Greetings
     <form action = "/logout">
       <input type = "submit" value = "Logout">
     </form>
-    
-  </body>
-
-</html>
